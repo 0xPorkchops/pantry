@@ -28,22 +28,16 @@ export default function HomePage() {
         <Table aria-label="Example static collection table">
           <TableHeader>
             <TableColumn>
-              <UploadButton
-                className="py-2"
-                endpoint="imageUploader"
-                onClientUploadComplete={() => {
-                  router.refresh();
-                }}
-              />
+              <div className="text-xl py-2">Add an Item</div>
             </TableColumn>
             <TableColumn>
-              <Input type="text" label="Enter Product" />
+              <Input type="text" size="sm" className="py-2" label="Enter Product" />
             </TableColumn>
             <TableColumn>
-              <Input type="number" label="Enter Quantity" />
+              <Input type="number" size="sm" className="py-2" label="Enter Quantity" />
             </TableColumn>
             <TableColumn>
-              <Button color="primary">Add</Button>
+              <Button className="py-2" color="primary">Add</Button>
             </TableColumn>
           </TableHeader>
           <TableBody>
@@ -61,7 +55,7 @@ export default function HomePage() {
                 <div className="text-xl">Peanut Butter</div>
               </TableCell>
               <TableCell>
-                <Input type="number" label="Quantity" />
+                <Input type="number" size="sm" label="Quantity" />
               </TableCell>
               <TableCell>
                 <Button color="secondary">Delete</Button>
