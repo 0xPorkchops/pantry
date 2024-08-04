@@ -1,37 +1,75 @@
+"use client";
+
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Button, Input, Image } from "@nextui-org/react";
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@nextui-org/table";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { UploadButton } from "~/utils/uploadthing";
 
 export default function HomePage() {
+  const router = useRouter();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
+    <div>
+      <SignedOut>
+        <div className="py-16 text-center text-3xl">
+          Sign in above to view your pantry
         </div>
-      </div>
-    </main>
+      </SignedOut>
+      <SignedIn>
+        <Table aria-label="Example static collection table">
+          <TableHeader>
+            <TableColumn>
+              <UploadButton
+                className="py-2"
+                endpoint="imageUploader"
+                onClientUploadComplete={() => {
+                  router.refresh();
+                }}
+              />
+            </TableColumn>
+            <TableColumn>
+              <Input type="text" label="Enter Product" />
+            </TableColumn>
+            <TableColumn>
+              <Input type="number" label="Enter Quantity" />
+            </TableColumn>
+            <TableColumn>
+              <Button color="primary">Add</Button>
+            </TableColumn>
+          </TableHeader>
+          <TableBody>
+            <TableRow key="1">
+              <TableCell>
+                <Image
+                  isZoomed
+                  height={50}
+                  width={50}
+                  alt="NextUI Fruit Image with Zoom"
+                  src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+                />
+              </TableCell>
+              <TableCell>
+                <div className="text-xl">Peanut Butter</div>
+              </TableCell>
+              <TableCell>
+                <Input type="number" label="Quantity" />
+              </TableCell>
+              <TableCell>
+                <Button color="secondary">Delete</Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </SignedIn>
+    </div>
   );
 }

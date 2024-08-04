@@ -21,19 +21,21 @@ export function TopNav() {
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent>
-        <Input
-          classNames={{
-            base: "w-full h-10",
-            mainWrapper: "h-full w-full",
-            input: "text-small w-full",
-            inputWrapper:
-              "h-full w-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-          }}
-          placeholder="Type to search..."
-          size="sm"
-          startContent={<SearchIcon size={18} />}
-          type="search"
-        />
+        <SignedIn>
+            <Input
+            classNames={{
+                base: "w-full h-10",
+                mainWrapper: "h-full w-full",
+                input: "text-small w-full",
+                inputWrapper:
+                "h-full w-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+            }}
+            placeholder="Type to search..."
+            size="sm"
+            startContent={<SearchIcon size={18} />}
+            type="search"
+            />
+        </SignedIn>
       </NavbarContent>
       <NavbarContent justify="end">
         <SignedOut>
