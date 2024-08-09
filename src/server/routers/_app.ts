@@ -4,7 +4,6 @@ import db from "../db/firestore";
 import { Product } from "~/utils/data";
 import { procedure, router } from '../trpc';
 import { z } from 'zod';
-import { addProduct } from "../queries";
 import { utapi } from "../uploadthing";
 
 export const appRouter = router({
