@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, Input, Select, SelectItem, Button, ModalFooter } from '@nextui-org/react';
 import { CameraIcon } from './cameraIcon';
 import { Product } from '~/utils/data';
-import { utapi } from '~/server/uploadthing';
 import { useUploadThing } from '~/utils/uploadthing';
 
 interface UpdateProductModalProps {
@@ -74,6 +73,13 @@ const UpdateProductModal: React.FC<UpdateProductModalProps> = ({ isOpen, onClose
 
   useEffect(() => {
     if (!isOpen) {
+      setFormData({
+        productName: '',
+        quantity: '',
+        location: '',
+        note: '',
+        image: '',
+      });
       setSelectedFile(null);
       setFileName('');
     } else if (isOpen) {

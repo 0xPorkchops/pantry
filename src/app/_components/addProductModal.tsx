@@ -3,7 +3,6 @@ import { Modal, ModalContent, ModalHeader, ModalBody, Input, Select, SelectItem,
 import { CameraIcon } from './cameraIcon';
 import { type Product } from '~/utils/data';
 import { useUploadThing } from '~/utils/uploadthing';
-import { set } from 'zod';
 
 interface AddProductModalProps {
   isOpen: boolean;
@@ -18,6 +17,7 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, loca
     quantity: '',
     location: '',
     note: '',
+    image: '',
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState('');
@@ -50,11 +50,10 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, loca
 
     setIsLoading(true);
 
-    let imageUrl = '';
     if (selectedFile) {
       const uploadResult = await startUpload([selectedFile]);
       if (uploadResult && uploadResult.length > 0 && uploadResult[0]?.url) {
-        imageUrl = uploadResult[0].url;
+        formData.image = uploadResult[0].url;
       }
     }
 
@@ -64,7 +63,7 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, loca
       quantity: parseInt(formData.quantity),
       location: formData.location,
       note: formData.note,
-      image: imageUrl,
+      image: formData.image,
     });
 
     setIsLoading(false);
@@ -72,6 +71,13 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, loca
 
   useEffect(() => {
     if (!isOpen) {
+      setFormData({
+        productName: '',
+        quantity: '',
+        location: '',
+        note: '',
+        image: '',
+      });
       setSelectedFile(null);
       setFileName('');
     }
