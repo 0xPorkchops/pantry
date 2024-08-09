@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, Button, ModalFooter } from '@nextui-org/react';
 import { type Product } from '~/utils/data';
+import Image from 'next/image';
 
 interface ViewProductModalProps {
   isOpen: boolean;
@@ -31,7 +32,7 @@ const ViewProductModal: React.FC<ViewProductModalProps> = ({ isOpen, onClose, pr
               {product.image && (
                 <div>
                   <strong>Image:</strong>
-                  <img src={product.image} alt={product.productName} style={{ width: '100%', marginTop: '10px' }} />
+                  <Image src={product.image} alt={product.productName} layout="responsive" width={1000} height={600} />
                 </div>
               )}
             </ModalBody>

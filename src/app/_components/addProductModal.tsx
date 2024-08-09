@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, Input, Select, SelectItem, Button, ModalFooter } from '@nextui-org/react';
-import { CameraIcon } from './cameraIcon';
+import { CameraIcon } from './icons';
 import { type Product } from '~/utils/data';
 import { useUploadThing } from '~/utils/uploadthing';
 

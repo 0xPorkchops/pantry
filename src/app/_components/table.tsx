@@ -19,27 +19,16 @@ import {
   Chip,
   User,
   Pagination,
-  Selection,
-  ChipProps,
-  SortDescriptor,
+  type Selection,
+  type ChipProps,
+  type SortDescriptor,
   useDisclosure,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Select,
-  SelectItem
 } from "@nextui-org/react";
-import { PlusIcon } from "../../utils/PlusIcon";
-import { VerticalDotsIcon } from "../../utils/VerticalDotsIcon";
-import { ChevronDownIcon } from "../../utils/ChevronDownIcon";
-import { SearchIcon } from "../../utils/SearchIcon";
+import { SearchIcon, PlusIcon, VerticalDotsIcon, ChevronDownIcon } from "./icons";
 import { columns, locationOptions } from "../../utils/data";
 import { capitalize } from "../../utils/utils";
-import { Product } from "../../utils/data";
+import { type Product } from "../../utils/data";
 import { trpc } from "~/utils/trpc";
-import { CameraIcon } from "./cameraIcon";
 import AddProductModal from "./addProductModal";
 import UpdateProductModal from "./updateProductModal";
 import ViewProductModal from "./viewProductModal";

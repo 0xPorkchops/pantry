@@ -7,7 +7,6 @@ import {
   NavbarContent,
   Input,
 } from "@nextui-org/react";
-import SearchIcon from "./searchicon";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export function TopNav() {
