@@ -201,7 +201,7 @@ export default function App() {
                 <DropdownMenu>
                   <DropdownItem onClick={() => { setViewProduct(product); onViewOpen(); }}>View</DropdownItem>
                   <DropdownItem onClick={() => { setUpdateProduct(product); onUpdateOpen(); }}>Update</DropdownItem>
-                  <DropdownItem onClick={() => {deleteProductMutation.mutate({ id: product.id }); void getMyProductsQuery.refetch();}}>Delete</DropdownItem>
+                  <DropdownItem onClick={() => {deleteProductMutation.mutate({ id: product.id }, { onSuccess: () => {void getMyProductsQuery.refetch();},});}}>Delete</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </div>
