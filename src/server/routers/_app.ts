@@ -70,9 +70,9 @@ export const appRouter = router({
             const productDocRef = doc(db, "users", user.userId, "products", opts.input.id);
 
             const productSnapshot = await getDoc(productDocRef);
-            const existingImage = productSnapshot.get("image");
+            const existingImage: string = productSnapshot.get("image");
             if (existingImage) {
-              const oldImageKey = new URL(existingImage).pathname.split('/').pop();
+              const oldImageKey: string | undefined = new URL(existingImage).pathname.split('/').pop();
               if (oldImageKey) {
                 await utapi.deleteFiles(oldImageKey);
               }
@@ -111,9 +111,9 @@ export const appRouter = router({
       
           const { id, ...updatedProduct } = opts.input;
 
-          const existingImage = productSnapshot.get("image");
+          const existingImage: string = productSnapshot.get("image");
           if (existingImage && existingImage !== updatedProduct.image) {
-            const oldImageKey = new URL(existingImage).pathname.split('/').pop();
+            const oldImageKey: string | undefined = new URL(existingImage).pathname.split('/').pop();
             if (oldImageKey) {
               await utapi.deleteFiles(oldImageKey);
             }
